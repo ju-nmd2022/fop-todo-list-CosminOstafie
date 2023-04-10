@@ -12,9 +12,23 @@
     <header>
       <h1 class="title">ToDo List</h1>
     </header>
+    <div class="container-name-list">
+      <input
+        id="list-name"
+        type="text"
+        class="list-name"
+        placeholder="Name your list"
+      />
+    </div>
     <div class="main-container">
       <!-- <h3 class="name-list">Name your List</h3> -->
-      <input type="text" class="name-list" placeholder="Name your list" />
+
+      <ul id="listElement"></ul>
+      <input type="text" id="inputText" />
+      <button class="item" id="addElement">Add</button>
+      <button class="item" id="clearList">Clear List</button>
+      <button class="item" id="saveList">Save List</button>
+      <button id="removeElement"></button>
     </div>
   </body>
 </html>

@@ -30,13 +30,25 @@ header {
   border-width: 1px;
 }
 
-.name-list {
+.container-name-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-name {
   height: 2rem;
-  width: 100%;
+  width: 40rem;
+  margin: 10px;
+  justify-self: center;
   text-align: center;
   color: #464864;
   font-size: 20px;
   background-color: #aaabb8;
   border-width: 1px;
   border-radius: 5px;
+}
+.item {
+  width: 50px;
+  height: 50px;
 }
