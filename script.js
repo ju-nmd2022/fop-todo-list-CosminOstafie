@@ -5,6 +5,7 @@ const textInput = document.querySelector("#inputText");
 const addItemBtn = document.querySelector("#addItem");
 const saveBtn = document.querySelector("#saveList");
 const removeItemBtn = document.querySelector("#removeItem");
+const listName = document.querySelector("#list-name");
 
 //Event Listener for the Add item button
 addItemBtn.addEventListener("click", addItem);
@@ -15,23 +16,38 @@ function addItem() {
   const itemText = textInput.value;
   console.log(textInput.value);
 
-  if (textInput.value === "") {
+  if (itemText === "") {
     return;
   }
 
   //Create new list item and add it to the list
   const newItem = document.createElement("li");
-  newItem.innerText = textInput.innerHTML;
+  newItem.innerText = itemText;
   listElement.appendChild(newItem);
+
+  //Add event listener to mark completed items
+
+  newItem.addEventListener("click", () => {
+    newItem.classList.toggle("completed-item");
+  });
 
   //Add the button to remove the item
   const deleteButton = document.createElement("button");
   deleteButton.innerText = "X";
   deleteButton.classList.add("delete");
-  listElement.appendChild(deleteButton);
+  newItem.appendChild(deleteButton);
 
   // Event listener for the delete button
   deleteButton.addEventListener("click", () => {
-    listElement.remove();
+    newItem.remove();
   });
+
+  //Clear the input field after adding item
+  textInput.value = "";
 }
+
+//Add event listener to clear all the completed items from the list
+clearBtn.addEventListener("click", () => {
+  const completedItems = document.querySelectorAll("completed-item");
+  completedItems.forEach((item) => item.remove());
+});
