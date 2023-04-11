@@ -1,7 +1,7 @@
 //Selecting the HTML elements
 
 const listElement = document.querySelector("#listElement");
-const textInput = document.querySelector("#textInput");
+const textInput = document.querySelector("#inputText");
 const addItemBtn = document.querySelector("#addItem");
 const saveBtn = document.querySelector("#saveList");
 const removeItemBtn = document.querySelector("#removeItem");
@@ -13,14 +13,15 @@ addItemBtn.addEventListener("click", addItem);
 function addItem() {
   //Get the input value
   const itemText = textInput.value;
+  console.log(textInput.value);
 
-  if (itemText === "") {
+  if (textInput.value === "") {
     return;
   }
 
   //Create new list item and add it to the list
   const newItem = document.createElement("li");
-  newItem.innerText = itemText;
+  newItem.innerText = textInput.innerHTML;
   listElement.appendChild(newItem);
 
   //Add the button to remove the item
