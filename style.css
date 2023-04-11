@@ -1,52 +1,98 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
   background-color: #25274d;
-} */
-
-/* header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
+  padding: 10px;
 }
 
-.title {
-  font-size: 40px;
-  color: white;
+.list-container {
+  width: 100%;
+  max-width: 500px;
+  background-color: white;
+  margin: 100px auto;
+  padding: 40px;
+  border-radius: 10px;
 }
-.container-name-list {
+
+.list-container h2 {
   display: flex;
+  font-size: 34px;
   align-items: center;
+  margin-bottom: 10px;
+
   justify-content: center;
-}
-.main-container {
-  display: block;
-  margin: auto;
-  width: 40rem;
-  height: 40rem;
-  display: flex;
-  justify-content: center;
-  justify-self: center;
-  background-color: #aaabb8;
-  border-radius: 8px;
-  border-width: 1px;
 }
 
 .list-name {
-  height: 2rem;
-  width: 40rem;
-  margin: 10px;
-  justify-self: center;
-  text-align: center;
-  color: #464864;
-  font-size: 20px;
-  background-color: #aaabb8;
-  border-width: 1px;
-  border-radius: 5px;
-} */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  background-color: lightgrey;
 
-.completed-item {
+  border-radius: 20px;
+  margin: 15px;
+}
+
+.list-name input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 20px;
+  flex: 1;
+  padding: 10px;
+}
+
+.list-name button {
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 14px;
+  background-color: #25274d;
+  color: white;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: lightgrey;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.input-container input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  font-weight: 14px;
+}
+
+.input-container button {
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: #25274d;
+  color: white;
+}
+
+ul li {
+  list-style: none;
+  font-size: 16px;
+  padding: 10px 5px 10px 25px;
+  cursor: pointer;
+}
+
+.completed {
+  color: #555;
   text-decoration: line-through;
 }

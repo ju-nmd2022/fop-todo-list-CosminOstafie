@@ -5,29 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>ToDo List</title>
+    <title>To Do List</title>
     <script src="script.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1 class="title">ToDo List</h1>
-    </header>
-    <div class="container-name-list">
-      <input
-        id="list-name"
-        type="text"
-        class="list-name"
-        placeholder="Name your list"
-      />
-    </div>
-    <div class="main-container">
-      <!-- <h3 class="name-list">Name your List</h3> -->
+    <div class="container">
+      <div class="list-container">
+        <h2>To Do List</h2>
 
-      <ul id="listElement"></ul>
-      <input type="text" id="inputText" />
-      <button class="item" id="addItem">Add</button>
-      <button class="item" id="clearList">Clear List</button>
-      <button class="item" id="saveList">Save List</button>
+        <div class="list-name">
+          <input type="text" id="list-name" placeholder="Name your list" />
+          <button id="saveNameBtn">Save Name</button>
+        </div>
+
+        <div class="input-container">
+          <input type="text" id="input-box" placeholder="Add Task" />
+          <button class="addItemBtn" id="addItemBtn">Add Task</button>
+        </div>
+
+        <ul id="list-element">
+          <!-- <li class="completed">Task 1</li>
+          <li>Task 2</li>
+          <li>Task 3</li> -->
+        </ul>
+      </div>
     </div>
   </body>
 </html>
