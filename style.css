@@ -16,27 +16,25 @@ header {
   font-size: 40px;
   color: white;
 }
-
-.main-container {
-  display: flex;
-  margin: auto;
-  width: 40rem;
-  height: 40rem;
-  display: flex;
-  justify-content: center;
-  justify-self: center;
-  background-color: #aaabb8;
-  border-radius: 8px;
-  border-width: 1px;
-}
-
 .container-name-list {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.main-container {
+  /* display: block;
+  margin: auto;
+  width: 40rem;
+  height: 40rem;
+  display: flex;
+  justify-content: center;
+  justify-self: center; */
+  background-color: #aaabb8;
+  /* border-radius: 8px;
+  border-width: 1px; */
+}
 
-.list-name {
+/* .list-name {
   height: 2rem;
   width: 40rem;
   margin: 10px;
@@ -47,8 +45,10 @@ header {
   background-color: #aaabb8;
   border-width: 1px;
   border-radius: 5px;
-}
+}*/
+
 .item {
   width: 50px;
   height: 50px;
+  background-color: white;
 }
