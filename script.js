@@ -1,93 +1,37 @@
-//Selecting the HTML elements
+//Variables to access the HTML Elements
+const listElement = document.getElementById("list-element");
+const listName = document.getElementById("list-name");
+const saveNameBtn = document.getElementById("saveNameBtn");
+const inputBox = document.getElementById("input-box");
+const addItemBtn = document.getElementById("addItemBtn");
 
-const listElement = document.querySelector("#listElement");
-const textInput = document.querySelector("#inputText");
-const addItemBtn = document.querySelector("#addItem");
-const saveBtn = document.querySelector("#saveList");
-const removeItemBtn = document.querySelector("#removeItem");
-const listName = document.querySelector("#list-name");
-const clearBtn = document.querySelector("#clearList");
+let ItemsArray = [];
 
-//Event Listener for the Add item button
-addItemBtn.addEventListener("click", addItem);
+//Adding event listener to the add task button + function
 
-//Function to add items to the list
-function addItem() {
-  //Get the input value
-  const itemText = textInput.value;
-  console.log(textInput.value);
+addItemBtn.addEventListener("click", addTask);
 
-  if (itemText === "") {
+function addTask() {
+  const textInput = inputBox.value;
+  if (textInput === "") {
     return;
   }
 
-  //Create new list item and add it to the list
-  const newItem = document.createElement("li");
-  newItem.innerText = itemText;
-  listElement.appendChild(newItem);
-
-  //Add event listener to mark completed items
-
-  newItem.addEventListener("click", () => {
-    newItem.classList.toggle("completed-item");
-  });
+  //Create a new item and append it to the list
+  let newListItem = document.createElement("li");
+  newListItem.innerText = textInput;
+  let objectItem = {
+    text: textInput,
+    completed: false,
+  };
+  listElement.appendChild(newListItem);
+  ItemsArray.push(objectItem);
 
   //Add the button to remove the item
-  const deleteButton = document.createElement("button");
-  deleteButton.innerText = "X";
-  // deleteButton.classList.add("delete");
-  newItem.appendChild(deleteButton);
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "X";
+  deleteBtn.classList.add("deleteBtn");
+  newListItem.appendChild(deleteBtn);
 
-  // Event listener for the delete button
-  deleteButton.addEventListener("click", () => {
-    newItem.remove();
-  });
-
-  //Clear the input field after adding item
-  textInput.value = "";
-}
-
-//Add event listener to clear all the completed items from the list
-clearBtn.addEventListener("click", () => {
-  const completedItems = document.querySelectorAll(".completed-item");
-  completedItems.forEach((item) => item.remove());
-});
-
-//Function to save the list to local storage
-function saveList() {
-  const listItems = listElement.querySelectorAll("li");
-
-  //Convert the items of the list to array of objects
-  const ObjectArray = Array.from(listItems).map((item) => {
-    return {
-      text: item.innerText,
-      completedItem: item.classList.contains("completed-item"),
-    };
-  });
-
-  //Save the name of the list and the list to the local storage as an object
-
-  const listName = listName.value;
-  const listObject = {
-    listName: listName,
-    listItems: ObjectArray,
-  };
-
-  localStorage.setItem("toDoList", JSON.stringify(listObject));
-}
-
-//Loading the list from local storage
-
-function loadList() {
-  const listString = localStorage.getItem("todoList");
-  if (listString) {
-    //Convert the list string to object
-    const listObject = JSON.parse(listString);
-
-    //Set the name of the list in the object
-    listName.value = listObject.listName;
-
-    //Add the to-do items to the list object
-    listObject.items.forEach((item) => {});
-  }
+  inputBox.value = "";
 }
