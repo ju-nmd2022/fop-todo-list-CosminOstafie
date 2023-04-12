@@ -62,6 +62,59 @@ function addTask() {
   inputBox.value = "";
 }
 
+//Add event listener to save the list name to local storage
+saveNameBtn.addEventListener("click", () => {
+  listNameValue = listName.value;
+  localStorage.setItem("listName", listNameValue);
+});
+
+//Adapted from Chat Gpt lines 73->88
+//Load list name and items from local storage when the page is loaded and display them
+window.addEventListener("load", () => {
+  listNameValue = localStorage.getItem("listName");
+  if (listNameValue) {
+    listName.value = listNameValue;
+  }
+  let storedItems = localStorage.getItem("ItemsArray");
+  if (storedItems) {
+    ItemsArray = JSON.parse(storedItems);
+    for (let i = 0; i < ItemsArray.length; i++) {
+      let newListItem = document.createElement("li");
+      newListItem.innerText = ItemsArray[i].text;
+      listElement.appendChild(newListItem);
+      // Add the completed class to the list item if the item is completed
+      if (ItemsArray[i].completed) {
+        newListItem.classList.add("completed");
+      }
+
+      //Toggle completed state when an item is clicked
+      newListItem.addEventListener("click", function () {
+        if (ItemsArray[i].completed) {
+          ItemsArray[i].completed = false;
+          newListItem.classList.remove("completed");
+          updateLocalStorage();
+        } else {
+          ItemsArray[i].completed = true;
+          newListItem.classList.add("completed");
+          updateLocalStorage();
+        }
+      });
+      const deleteBtn = document.createElement("button");
+      deleteBtn.innerText = "X";
+      deleteBtn.classList.add("deleteBtn");
+      newListItem.appendChild(deleteBtn);
+
+      //Remove item from local storage when the delete button is clicked
+      //Same method as before but for the items loaded from localStorage
+      deleteBtn.addEventListener("click", () => {
+        ItemsArray.splice(i, 1);
+        localStorage.setItem("ItemsArray", JSON.stringify(ItemsArray));
+        newListItem.remove();
+      });
+    }
+  }
+});
+
 function updateLocalStorage() {
   localStorage.setItem("ItemsArray", JSON.stringify(ItemsArray));
 }
